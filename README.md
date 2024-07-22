@@ -44,6 +44,7 @@ To get started with this project, follow these steps:
 
 
 ### Interacting with the Application
+
 Please run `make start` in a terminal, and navigate to `http://localhost:8000/docs`, to view the documentation for this service.
 To simulate a free user, enter `user` for the username, and `password` for the password when requesting for a token.
 To simulate a paid user, enter `paid_user` for the username, and `password` for the password when requesting for a token.
@@ -58,12 +59,15 @@ To simulate a paid user, enter `paid_user` for the username, and `password` for 
 
 5. For performance and load testing, use Locust by running `make load-test`.
 
+6. I have also added a Postman collection, which can be imported into Postman, in order to test the APIs.
+
 ### Stopping the Application
 
 1. Run `make stop` to stop the running Docker containers and clean up the environment.
 
 
 ## Assumptions/Optimizations
+
 1. If a transaction has been given a rating by this service, I assumed that this rating does not change for subsequent calls with 
 the same hash, and am hence caching it.
 2. Latest transaction hashes are cached in Redis, to avoid making repeated calls to Alchemy. The transactions are cached for a duration
@@ -138,6 +142,7 @@ The number of maximum concurrent users was set to `1000 users`, with a ramp-up o
 
 
 ## Improvements
+
 - **More robust error-handling**: Currently, I have only implemented some basic error-handling, and have not accounted for inter-service failures, but this would be necessary in a production environment, in order to handle such failures gracefully.
 - **Load balancer**: This backend service could potentially sit behind a load balancer like Nginx/Kong, allowing for seamless load-balancing between running containers. A Load balancer can also handle some/all parts of AuthN/AuthZ, thereby offloading that responsibility from the backend service.
 - **Logging**: A common logger, with various log levels would be good to have, as it will enable easier debugging. These logs can be exported to ELK/Clickhouse, and can be queried via a dashboard on Grafana.
