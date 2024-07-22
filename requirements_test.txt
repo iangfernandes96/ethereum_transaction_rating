@@ -1,0 +1,14 @@
+fastapi
+python-jose
+pydantic
+httpx
+orjson
+redis
+uvicorn
+fastapi-utils
+typing-inspect
+fastapi-lifespan-manager
+pytest
+pytest-asyncio
+respx
+freezegun
